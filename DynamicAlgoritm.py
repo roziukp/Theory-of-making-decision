@@ -7,18 +7,17 @@ def matrix(n):
     X=[[randint(-5,20) for i in range(n)] for _ in range(n)]
     return X
 
-# def newArr(a,b,X):
-#     arr = [[0] * 5 for i in range(5)]
-#     arr[a][b] = X[a][b]
-#     return arr
 
-
+#Main function for searching the biggest sum on the rout
 def calc(X,n,x,y,arr):
 
+    #possible transition variants
     brr=[X[x-1][y],X[x][y+1],X[x-1][y+1]]
+    #max number index from brr
     maxim=brr.index(max(brr))
-
+    #array of indexes
     d=[[x-1,y],[x,y+1],[x-1,y+1]]
+
     for keys in range(len(d)):
         if keys == maxim:
             print('Index: {} | max: {}'.format(d[keys],max(brr)))
@@ -40,18 +39,17 @@ def calc(X,n,x,y,arr):
 
 def main():
     n=int(input('Matrix size: '))
-    n=5
     X=matrix(n)
-#   matr=np.array(X)
+    #X=[[17,14,7,9,3,],[25,19,21,16,5],[39,36,31,24,3],[40,35,28,26,7],[44,37,30,24,15]]
     arr = [['*'] * 5 for i in range(5)]
     arr[4][0]=X[4][0]
-
-
+    #input array
     for i in X:
         print(i)
     print("__________________________")
     calc(X,n,4,0,arr)
     print("__________________________")
+    #Output array(rout BOTTOM-UP)
     for i in arr:
         print(i)
 
